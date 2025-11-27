@@ -1,128 +1,78 @@
-📝 Todo App — Full-Stack CRUD Application
+## Todo Frontend
 
 A fully responsive Todo application built with React, TypeScript, Tailwind CSS, and Next.js, connected to a secure backend API.
 Users can register, log in, add tasks, mark tasks complete, and delete tasks.
 Includes JWT authentication, protected routes, and mobile-optimized UI.
 
-🚀 Features
-✅ Frontend
-
-Built with Next.js, React, TypeScript, and Tailwind CSS
-
-Uses shadcn/ui for clean, accessible UI components
-
-Fully responsive — optimized for mobile, tablet, and desktop
-
-Authentication pages:
-
-Login
-
-Register
-
-Protected Todo page (requires login)
-
-CRUD operations:
-
-➕ Add task
-
-✏️ Toggle completed
-
-❌ Delete task
-
-📄 View all tasks
-
-Logout button + token removal
-
-🔧 Tech Stack
-Frontend
+## Tech Stack
 
 React
-
 Next.js
-
 TypeScript
-
 Tailwind CSS
-
 shadcn/ui
-
 lucide-react icons
 
-Backend
+## Authentication pages:
 
-Node.js + Express
+- Login
+- Register
+- Protected Todo page (requires login)
 
-MongoDB + Mongoose
+## CRUD operations:
 
-JWT Authentication
-
-Bcrypt password hashing
-
-📱 Responsive Design
+- Add task
+- Toggle completed
+- Delete task
+- View all tasks
+- Logout button + token removal
 
 The UI is optimized for:
 
-📱 Mobile (small screens)
-
-📐 Tablet
-
-🖥️ Desktop
+- Mobile (small screens)
+- Tablet
+- Desktop
 Layouts adjust automatically using Tailwind breakpoints, ensuring clean spacing, readability, and usability on all devices.
 
-📡 API Integration (Frontend → Backend)
+## API Integration (Frontend → Backend)
 
 The frontend consumes the backend REST API using functions such as:
 
 loginUser()
-
 registerUser()
-
 fetchTodos()
-
 createTodo()
-
 updateTodo()
-
 deleteTodo()
 
 Each call includes the JWT token stored in localStorage.
 
-🔒 Authentication Flow
 
-User registers or logs in
-
-Backend returns a JWT token
-
-Token is stored using:
-
-saveToken(token)
-
-
-Protected pages check authentication:
-
-const token = getToken();
-if (!token) router.push("/login");
-
-
-Logout removes the token:
-
-removeToken();
-router.push("/login");
-
-📂 Project Structure (Frontend)
-/app
-  /login
-  /register
-  page.tsx (Todo Dashboard)
-  /components
+## Project Structure (Frontend)
+/src
+  /app
+    /login
+    /register
+     page.tsx (Todo Dashboard)
+    /components
      TodoForm.tsx
      TodoItem.tsx
-  /utils
+    /utils
      api.ts
      auth.ts
      authApi.ts
 
-🛠️ Running the Project
+## UI Design
+
+The design uses:
+Glassmorphism cards
+Smooth gradients
+Rounded components
+Clean spacing
+Lucide icons for modern visuals
+
+
+## Running the Project
 1. Clone the repo
 git clone your-repo-url
 cd your-project
@@ -133,44 +83,92 @@ npm install
 3. Run frontend
 npm run dev
 
-🧪 CRUD Features Demonstrated
-1️⃣ Display Tasks
 
-Fetch and render tasks from the database.
 
-2️⃣ Add Task
 
-Submit a title + optional description.
+## Todo Backend
 
-3️⃣ Toggle Completed
+A simple, secure, and modular Todo API built with Node.js, Express, MongoDB (Mongoose), and JWT authentication. The API supports full CRUD operations for todos with user-based authorization.
 
-Switch completed: true/false using a checkbox or button.
+## Features
+- User Authentication
 
-4️⃣ Delete Task
+Register new users
+Login with email & password
+Passwords hashed with bcrypt
+Authentication via JWT (24h expiry)
+Only authenticated users can access Todo routes
 
-Remove task using backend endpoint.
+- Todo Management (CRUD)
 
-🎨 UI Design
+Create, read, update, delete todos
+Todos are private to each user
+Each todo linked to its owner
+description, completed status
+Proper validation & error handling
 
-The design uses:
+## Project Structure
+/src
+  /config       
+  /controllers  
+  /models       
+  /routes       
+  /middleware         
+app.js
+server.js
 
-Glassmorphism cards
+## Tech Stack
 
-Smooth gradients
+Node.js + Express
+MongoDB + Mongoose
+JWT for auth
+bcrypt for hashing
+dotenv for environment variables
+Postman/Insomnia for testing (optional)
 
-Rounded components
+## Authentication Endpoints
+- POST /auth/register
+Creates a new user
+Hashes password
+Returns user info (without password)
 
-Clean spacing
+- POST /auth/login
+Validates email & password
+Returns JWT token (24h)
 
-Lucide icons for modern visuals
+- Middleware
+Authentication
+Verifies JWT
+Attaches decoded user to req.user
+Authorization
 
-🔐 Environment Variables (Frontend)
+Users can only access or modify their own todos
 
-Create a .env.local:
+## Todo Endpoints
+- POST /todos
+Create new todo
+Requires authentication
+Owner auto-assigned from JWT
 
-NEXT_PUBLIC_API_URL=http://localhost:5000
+- GET /todos
+Fetch all todos of the logged-in user
 
-❤️ Credits
+- GET /todos/:id
+Fetch a single todo (must belong to user)
+PATCH /todos/:id
+Update title, description, or completed status
+User must be the owner
 
-Created by Zipporah, Full-Stack Developer.
-Built as part of a full-stack project integrating frontend and backend skills.
+- DELETE /todos/:id
+Delete a todo
+User must be the owner
+
+
+## Running the Project
+npm install
+npm run dev
+
+
+API runs at:
+
+http://localhost:5000

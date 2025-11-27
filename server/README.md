@@ -1,8 +1,7 @@
 # Todo Backend
 
 
-Node.js + Express + MongoDB (Mongoose) backend for the ToDoApp internship project.
-
+Node.js + Express + MongoDB (Mongoose) 
 
 ## Setup
 1. Copy files into `ToDoApp/backend`.
