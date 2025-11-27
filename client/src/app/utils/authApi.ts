@@ -1,4 +1,4 @@
-const BASE_URL = "http://localhost:5000";
+const BASE_URL = "https://todoapp-backend-lddi.onrender.com";
 
 export const registerUser = async (name: string, email: string, password: string) => {
   const res = await fetch(`${BASE_URL}/auth/register`, {
