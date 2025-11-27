@@ -172,3 +172,15 @@ npm run dev
 API runs at:
 
 http://localhost:5000
+
+⚠️ Challenges Faced
+
+1. Nested Client Folder Issue
+
+Initially, the project accidentally included a nested /client folder inside another client directory. This broke paths, imports, and tooling.
+The solution was to delete the entire nested structure, recreate the frontend cleanly, and reconnect it to the backend. This caused delays and required re-setting Tailwind, reinstalling dependencies, and re-configuring routes.
+
+2. MongoDB Connection Errors
+
+Faced multiple issues connecting to MongoDB Atlas due to IP whitelist restrictions and environment variable setup.
+Resolved by updating Atlas network access and confirming .env values.
